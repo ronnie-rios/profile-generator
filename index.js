@@ -13,7 +13,8 @@ class User {
     this.employeesArray = [];
     }
     addEmployee() {
-        return inquirer.prompt([{
+        return inquirer.prompt([
+            {
             message: 'Please enter a name.',
             name: 'name',
             validate: (input) => {
