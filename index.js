@@ -9,7 +9,46 @@ const Manager =require('./lib/Manager')
 
 //array to hold team members
 const teamArray = [];
+addMember();
+function addMember() {
+    inquirer.prompt([
+        {
+        type: 'list',
+        name: 'addMember',
+        message: 'Select a member type',
+        choices: ['Manager', 'Engineer','Intern', 'Finish']
+        }
+    ]).then(function(data) {
+        const memberRole = data.addMember;
 
-// function start() {
-//     function
-// }
+        if (memberRole==='Manager') {
+            managerInformation();
+        } else if(memberRole === 'Engineer') {
+            //function for engineer
+        } else if (memberRole === 'Intern') {
+            //function for intern
+        } else {
+            //create the team
+        }
+    });
+}
+
+function managerInformation() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'managerName',
+            message: "Enter the manager's name",
+        },
+        {
+            type: 'input',
+            name: 'managerID',
+            message: 'Enter your employee ID#',
+        },
+        {
+            type: 'input',
+            name: 'managerEmail',
+            message: 'Enter your email address'
+        }
+    ])
+};
