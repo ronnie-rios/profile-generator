@@ -56,20 +56,21 @@ function managerInformation() {
         },
         {
             type: 'input',
-            name: 'number',
-            message: 'Enter your office number.'
+            name: 'email',
+            message: 'Enter your email address'
         },
         {
             type: 'input',
-            name: 'email',
-            message: 'Enter your email address'
+            name: 'number',
+            message: 'Enter your office number.'
         }
+        
     ]).then(function(data) {
         const manager = new Manager(
             data.name,
             data.id,
-            data.number,
-            data.email);
+            data.email,
+            data.number);
         teamArray.push(manager);
         addMember();
     });
@@ -90,20 +91,20 @@ function engineerInformation() {
         },
         {
             type: 'input',
-            name: 'github',
-            message: 'Enter their github profile username.'
+            name: 'email',
+            message: 'Enter their email address'
         },
         {
             type: 'input',
-            name: 'email',
-            message: 'Enter their email address'
+            name: 'github',
+            message: 'Enter their github profile username.'
         }
     ]).then(function(data) {
         const engineer = new Engineer(
             data.name,
             data.id,
-            data.github,
-            data.email);
+            data.email,
+            data.github,);
         teamArray.push(engineer);
         addMember();
     });
@@ -124,20 +125,20 @@ function internInformation() {
         },
         {
             type: 'input',
-            name: 'school',
-            message: "Enter the intern's school."
-        },
+            name: 'email',
+            message: 'Enter their email address'
+        } ,
         {
             type: 'input',
-            name: 'internEmail',
-            message: 'Enter their email address'
+            name: 'school',
+            message: "Enter the intern's school."
         }
     ]).then(function(data) {
         const intern = new Intern(
             data.name,
             data.id,
-            data.school,
-            data.email);
+            data.email,
+            data.school);
         teamArray.push(intern);
         addMember();
     });
