@@ -1,23 +1,21 @@
-var fs = require('fs')
+const generateManger = function(manager) {
+  return `
+  <div class-"col-3 mt-3">
+    <div class = "card">
+      <div class = 'header'>
+        <h3>${manager.name}</h3>
+      </div>
 
-// var filename = //path to file
-// var createfile = fs.createWrite
+      <div class = 'card-body'>
+        <ul>  
+          <li class='name'> Name: ${manager.name}</li>
+          <li class='id'> ID: ${manager.id}</li>
+          <li class='office-num'> Office Number: ${manager.number}</li>
+          <li class='email'> Email: ${manager.email}</li>
+        </ul>
+      </div>
 
-function generateHTML(info) {
-    return `<html lang="en">
-    <head>
-      <meta charset="utf-8">
-    
-      <title>The HTML5 Herald</title>
-      <meta name="description" content="The HTML5 Herald">
-      <meta name="author" content="SitePoint">
-    
-      <link rel="stylesheet" href="css/styles.css?v=1.0">
-    
-    </head>
-    
-    <body>
-      <script src="js/scripts.js"></script>
-    </body>
-    </html>`
+      </div>
+  </div>
+  `;
 }
