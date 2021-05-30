@@ -1,15 +1,16 @@
-const inquirer = require('inquirer')
 
-const generateIndex = require('./src/generateHTML')
-
+const generateHTML = require('./src/generateHTML')
+//team lib
 const Employee =require('./lib/Employee')
 const Engineer =require('./lib/Engineer')
 const Intern =require('./lib/Intern')
 const Manager =require('./lib/Manager')
 
+//node packages
+const fs = require('fs')
+const inquirer = require('inquirer')
 //array to hold team members
 const teamArray = [];
-addMember();
 function addMember() {
     inquirer.prompt([
         {
@@ -31,7 +32,12 @@ function addMember() {
             //function for intern
             internInformation();
         } else {
-            //create the team
+            const teamHTML = generateHTML(teamArray)
+            fs.writeFile('./dist/team.html', teamHTML, err => {
+                if (err) throw new Error (err);
+                console.log('Your team profile has been created. Checkout team.html to view your results')
+            })
+            
         }
     });
 };
@@ -81,12 +87,12 @@ function engineerInformation() {
         {
             type: 'input',
             name: 'id',
-            message: 'Enter your employee ID#',
+            message: 'Enter their employee ID#',
         },
         {
             type: 'input',
             name: 'github',
-            message: 'Enter your github profile username.'
+            message: 'Enter their github profile username.'
         },
         {
             type: 'input',
@@ -137,3 +143,7 @@ function internInformation() {
         addMember();
     });
 };
+
+
+addMember();
+

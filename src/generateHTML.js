@@ -1,115 +1,88 @@
 //manager html
-const generateManger = function(manager) {
+const generateManger = manager => {
+ 
   return `
+  ${manager.map(({ name, id, email, number }) => {
+    return `
   <div class-"col-3 mt-3">
     <div class = "card">
       <div class = 'header'>
-        <h3>${manager.name}</h3>
+        <h3>${name}</h3>
       </div>
 
       <div class = 'card-body'>
         <ul>  
-          <li class='detail'> Name: ${manager.name}</li>
-          <li class='detail'> ID: ${manager.id}</li>
-          <li class='detail> Office Number: ${manager.number}</li>
-          <li class='detail'> Email: ${manager.email}</li>
+          <li class='detail'> ID: ${id}</li>
+          <li class='detail> Office Number: ${number}</li>
+          <li class='detail'> Email: ${email}</li>
         </ul>
       </div>
 
       </div>
   </div>
-  `;
+  `;}).join('')
+}`;
 }
+
+
 
 //engineer html
-const generateEngineer = function(engineer) {
+const generateEngineer = engineer => {
+ 
   return `
+  ${engineer.map(({ name, id, email, github }) => {
+    return `
   <div class-"col-3 mt-3">
     <div class = "card">
       <div class = 'header'>
-        <h3>${engineer.name}</h3>
+        <h3>${name}</h3>
       </div>
 
       <div class = 'card-body'>
         <ul>  
-          <li class='detail'> Name: ${engineer.name}</li>
-          <li class='detail'> ID: ${engineer.id}</li>
-          <li class='detail'> GitHub: ${engineer.github}</li>
-          <li class='detail'> Email: ${engineer.email}</li>
+          <li class='detail'> ID: ${id}</li>
+          <li class='detail> Github: ${github}</li>
+          <li class='detail'> Email: ${email}</li>
         </ul>
       </div>
 
       </div>
   </div>
-  `;
+  `;}).join('')
+}`;
 }
+
 
 //intern html
-const generateIntern = function(intern) {
+
+const generateIntern = intern => {
+ 
   return `
+  ${intern.map(({ name, id, email, school }) => {
+    return `
   <div class-"col-3 mt-3">
     <div class = "card">
       <div class = 'header'>
-        <h3>${intern.name}</h3>
+        <h3>${name}</h3>
       </div>
 
       <div class = 'card-body'>
         <ul>  
-          <li class='detail'> Name: ${intern.name}</li>
-          <li class='detail'> ID: ${intern.id}</li>
-          <li class='detail'> GitHub: ${intern.school}</li>
-          <li class='detail'> Email: ${intern.email}</li>
+          <li class='detail'> ID: ${id}</li>
+          <li class='detail> School: ${school}</li>
+          <li class='detail'> Email: ${email}</li>
         </ul>
       </div>
 
       </div>
   </div>
-  `;
+  `;}).join('')
+}`;
 }
 
-generateHTML = (data) => {
-
-  // array for cards 
-  htmlArray = []; 
-
-  for (let i = 0; i < data.length; i++) {
-      const employee = data[i];
-      const role = employee.getRole(); 
 
 
-      // call manager function
-      if (role === 'Manager') {
-          const managerCard = generateManager(employee);
-
-          htmlArray.push(managerCard);
-      }
-
-      // call engineer function
-      if (role === 'Engineer') {
-          const engineerCard = generateEngineer(employee);
-
-          htmlArray.push(engineerCard);
-      }
-
-      // call intern function 
-      if (role === 'Intern') {
-          const internCard = generateIntern(employee);
-
-          htmlArray.push(internCard);
-      }
-      
-  }
-
-  // joining strings 
-  const employeeCards = htmlArray.join('')
-
-  // return to generated page
-  const generateCards= generateTeamHtml(employeeCards); 
-  return generateCards;
-
-}
-
-const generateTeamHtml = function(cards) {
+module.exports = (manager, engineer, intern) =>{
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -131,7 +104,8 @@ const generateTeamHtml = function(cards) {
           <div class="container">
               <div class="row justify-content-center" id="team-cards">
                   <!--Team Cards-->
-                  ${cards}
+                  ${generateManger(manager)}
+                 
               </div>
           </div>
       </main>
@@ -142,3 +116,4 @@ const generateTeamHtml = function(cards) {
   </html>
   `
 }
+
