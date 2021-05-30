@@ -128,12 +128,12 @@ function internInformation() {
             message: 'Enter their email address'
         }
     ]).then(function(data) {
-        const engineer = new Engineer(
+        const intern = new Intern(
             data.name,
             data.id,
             data.school,
             data.email);
-        teamArray.push(engineer);
+        teamArray.push(intern);
         addMember();
     });
 };
