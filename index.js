@@ -11,6 +11,8 @@ const inquirer = require('inquirer')
 
 //array to hold team members
 const teamArray = [];
+
+//add member initializes prompts and creates file once user hits finish
 function addMember() {
     inquirer.prompt([
         {
@@ -143,6 +145,8 @@ function internInformation() {
         addMember();
     });
 };
+
+//creates html for each input
 function createCards() {
     const cardArray = [];
   //manager html
@@ -210,6 +214,8 @@ function createCards() {
     </div>
     `;
   }
+
+  //creates and pushes to html cards
   for (i = 0; i < teamArray.length; i++) {
     let teamMember = teamArray[i] 
     if (teamMember.getRole() === 'Manager') {
@@ -223,7 +229,7 @@ function createCards() {
   return cardArray.join('');
   }
   
- 
+ //boilerplate HTML
   function createPage() {
     return `
     <!DOCTYPE html>
@@ -246,6 +252,7 @@ function createCards() {
             <div class="container">
                 <div class="row justify-content-center" id="team-cards">
                     <!--Team Cards-->
+                    
                     ${createCards()}
                    
                 </div>
@@ -258,6 +265,6 @@ function createCards() {
     </html>
     `
   }
-
+//starts the prompt once index js is run
 addMember();
 
