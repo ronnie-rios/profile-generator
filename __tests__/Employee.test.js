@@ -7,3 +7,4 @@ test('Creates a new employee object', () => {
     expect(testEmployee.email).toBe(expect.any(String));
     expect(testEmployee.id).toEqual(expect.any(Number));
 })
+

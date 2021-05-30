@@ -22,6 +22,7 @@ function addMember() {
         const memberRole = data.addMember;
 
         if (memberRole==='Manager') {
+            console.log('Add Manager information');
             managerInformation();
         } else if(memberRole === 'Engineer') {
             //function for engineer
@@ -47,8 +48,21 @@ function managerInformation() {
         },
         {
             type: 'input',
+            name: 'managerNumber',
+            message: 'Emter your office number.'
+        },
+        {
+            type: 'input',
             name: 'managerEmail',
             message: 'Enter your email address'
         }
-    ])
+    ]).then(function(data) {
+        const manager = new Manager(
+            data.managerName,
+            data.managerId,
+            data.managerNumber,
+            data.managerEmail);
+        teamArray.push(manager);
+        addMember();
+    });
 };
